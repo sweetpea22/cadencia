@@ -32,15 +32,15 @@ export default function BalancerList() {
     }
   );
 
-  // const loadingMorePosts = networkStatus === NetworkStatus.fetchMore;
+  const loadingMorePosts = networkStatus === NetworkStatus.fetchMore;
 
-  // const loadMorePosts = () => {
-  //   fetchMore({
-  //     variables: {
-  //       skip: pools.length,
-  //     },
-  //   });
-  // };
+  const loadMorePosts = () => {
+    fetchMore({
+      variables: {
+        skip: pools.length,
+      },
+    });
+  };
 
   if (error) return <p> Error</p>;
   if (loading && !loadingMorePosts) return <div>Loading</div>;

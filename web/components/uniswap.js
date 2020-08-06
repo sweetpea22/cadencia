@@ -44,13 +44,23 @@ export default function UniswapList() {
 
   if (error) return <p> Error</p>;
   if (loading && !loadingMorePosts) return <div>Loading</div>;
+  const loadingMorePosts = networkStatus === NetworkStatus.fetchMore;
 
+  const loadMorePosts = () => {
+    fetchMore({
+      variables: {
+        skip: pools.length,
+      },
+    });
+  };
   const { tokens } = data;
 
   return (
     <>
       <div style={{ marginTop: "2rem", marginLeft: "5rem" }}>
-        <h1 style={{ marginTop: "1rem" }}>Most Swapped Tokens on Uniswap (TxCount)</h1>
+        <h1 style={{ marginTop: "1rem" }}>
+          Most Swapped Tokens on Uniswap (TxCount)
+        </h1>
         <BarChart
           instanceId="uniswapChart"
           width={900}
